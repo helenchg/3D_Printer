@@ -1,0 +1,4 @@
+CoreXYprinter
+=============
+
+CoreXY printer config
