@@ -2,7 +2,9 @@
 Author: Elena Chong, Michael Perrone
 
 Date: 7/21/2014
-This is the documentation for the different Slic3r configurations. Doubts/questions should be directed to the respective person who prepared the Slicer config.                            
+
+This is the documentation for the different Slic3r configurations. 
+Doubts/questions should be directed to the respective person who prepared the Slicer config.                            
 
 ## Printing with Prusa i3 
 -------------------------
