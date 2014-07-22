@@ -17,13 +17,20 @@
 We can print the plastic and the ink as separate gcode files. This allows us to print one thing completely, home the printer, load the ink gcode, then do dry runs with the silver extruder to make sure the position of the two extruders are calibrated properly before actually printing with the silver ink. You will need to separate the gcode for the plastic and the silver ink. All moves are in absolute coordinates, so if you home the printer in between prints it will go to where it left off
 	
 Steps:
-* 1. Open Slic3r and load config
-* 2. File - Combine multi-material STL files...
-* 3. Open the plastic .stl, then the ink stl 
-* 4. If there is no more file, click cancel. Save resulting file as .amf
-* 5. open .amf file 
-* 6. Export as .gcode
-* 7. - Nonembedded: open .gcode file, open search (CRTL + F) for T1 (ink extruder) - this should be at the end Cut from line T1 to before the line before T0. 
+1. Open Slic3r and load config
+
+2. File - Combine multi-material STL files...
+
+3. Open the plastic .stl, then the ink stl 
+
+4. If there is no more file, click cancel. Save resulting file as .amf
+
+5. open .amf file 
+
+6. Export as .gcode
+
+7. 
+- Nonembedded: open .gcode file, open search (CRTL + F) for T1 (ink extruder) - this should be at the end Cut from line T1 to before the line before T0. 
 Open a new file and paste the ink trace code there, save as .gcode
 - Embedded: You will either have to separate the amf gcode into three separate gcode files (bottom, ink, top) or you can add a pause before printing the ink by copy and paste the following lines into the place before T1 (change of extruder)
 		
@@ -33,7 +40,7 @@ Open a new file and paste the ink trace code there, save as .gcode
 		G4 P60000 # Pause for a 60 seconds (add more time or hit pause button)
 		G1 X-20 Z-30; # Go back to initial position to resume printing
 ...T1 (ink) CODE
-* 8.	Open Pronterface - Open .gcode file and print
+8.	Open Pronterface - Open .gcode file and print
 
 
 ### Config: MultilayerConfig
@@ -52,6 +59,7 @@ Open a new file and paste the ink trace code there, save as .gcode
 ### NOTE: Steps taken to adapt postprocessingscript for the corexy printer:
 * First, edit Dan's PrusaCircuitConverterScript.pl to use M42 P6 instead of M42 P32, then add the file directory into Slic3r - Print Settings - Output options
 * Second, add these into Slic3r - Printer Settings - Custom G-code
+
 Start G-code:
 		
 			G28 ; home all axis
