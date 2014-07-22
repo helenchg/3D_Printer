@@ -1,4 +1,4 @@
-CoreXYprinter
+3D Printing files
 =============
 
-CoreXY printer config
+Including files for Lewis Lab: Prusa i3 and CoreXY printer
