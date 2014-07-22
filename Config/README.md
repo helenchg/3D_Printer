@@ -51,6 +51,7 @@ Open a new file and paste the ink trace code there, save as .gcode
 **Prepared by:** Elena Chong
 
 **Detail:** Modified from Steve Kelly's lewis_corexy_1 single extrusion config and Dan's postprocessingscript
+
 **Description:**	Calibrated for dual extrusion (Plastic and Ink) to print on the CoreXY Printer. Just changed "Print center" and " Extruder offset"
 ### NOTE: Steps taken to adapt postprocessingscript for the corexy printer:
 * First, edit Dan's PrusaCircuitConverterScript.pl to use M42 P6 instead of M42 P32, then add the file directory into Slic3r - Print Settings - Output options
