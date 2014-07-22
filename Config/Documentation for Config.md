@@ -1,9 +1,11 @@
 # Slic3r Config Documentation
 Author: Elena Chong, Michael Perrone
+
 Date: 7/21/2014
 This is the documentation for the different Slic3r configurations. Doubts/questions should be directed to the respective person who prepared the Slicer config.                            
 
-## Printing with Prusa i3                                 
+## Printing with Prusa i3 
+-------------------------
 ### Config: ConductivityTracesConfig
 Prepared by: Elena Chong
 Detail: Modified from Dan Fitzgerald's ArduinoCircuit Config
@@ -36,9 +38,8 @@ Prepared by: Elena Chong
 Used for printing multilayer (Z axis) embedded ink traces
 If you are just printing plastic and traces (No adding components) you don't need to edit the gcode. You can go straight to printing.
 
-# Printing with CoreXY Printer
-
-=======
+## Printing with CoreXY Printer
+-------------------------------
 
 ### Config: lewis_corexy_1_MultiExtruder
 Prepared by: Elena Chong
