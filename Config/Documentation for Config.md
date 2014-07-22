@@ -36,15 +36,16 @@ Open a new file and paste the ink trace code there, save as .gcode
 
 ### Config: MultilayerConfig
 Prepared by: Elena Chong
-Used for printing multilayer (Z axis) embedded ink traces
-If you are just printing plastic and traces (No adding components) you don't need to edit the gcode. You can go straight to printing.
+
+Description: Used for printing multilayer (Z axis) embedded ink traces. If you are just printing plastic and traces (No adding components) you don't need to edit the gcode. You can go straight to printing.
 
 # Printing with CoreXY Printer
 -------------------------------
 
 ### Config: lewis_corexy_1_MultiExtruder
 Prepared by: Elena Chong
-Modified from Steve Kelly's lewis_corexy_1 single extrusion config and Dan's postprocessingscript
+
+Detail: Modified from Steve Kelly's lewis_corexy_1 single extrusion config and Dan's postprocessingscript
 	Calibrated for dual extrusion (Plastic and Ink) to print on the CoreXY Printer. Just changed "Print center" and " Extruder offset"
 ### NOTE: Steps taken to adapt postprocessingscript for the corexy printer:
 First, edit Dan's PrusaCircuitConverterScript.pl to use M42 P6 instead of M42 P32, then add the file directory into Slic3r - Print Settings - Output options
