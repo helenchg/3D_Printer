@@ -17,30 +17,26 @@
 We can print the plastic and the ink as separate gcode files. This allows us to print one thing completely, home the printer, load the ink gcode, then do dry runs with the silver extruder to make sure the position of the two extruders are calibrated properly before actually printing with the silver ink. You will need to separate the gcode for the plastic and the silver ink. All moves are in absolute coordinates, so if you home the printer in between prints it will go to where it left off
 	
 Steps:
+
 1. Open Slic3r and load config
-
 2. File - Combine multi-material STL files...
-
 3. Open the plastic .stl, then the ink stl 
-
 4. If there is no more file, click cancel. Save resulting file as .amf
-
 5. open .amf file 
-
 6. Export as .gcode
-
-7. 
-- Nonembedded: open .gcode file, open search (CRTL + F) for T1 (ink extruder) - this should be at the end Cut from line T1 to before the line before T0. 
+7.	- Nonembedded: open .gcode file, open search (CRTL + F) for T1 (ink extruder) - this should be at the end Cut from line T1 to before the line before T0. 
 Open a new file and paste the ink trace code there, save as .gcode
-- Embedded: You will either have to separate the amf gcode into three separate gcode files (bottom, ink, top) or you can add a pause before printing the ink by copy and paste the following lines into the place before T1 (change of extruder)
+
+	- Embedded: You will either have to separate the amf gcode into three separate gcode files (bottom, ink, top) or you can add a pause before printing the ink by copy and paste the following lines into the place before T1 (change of extruder)
 		
-		G400 #Finish all current moves
-		G91 # Relative coordinates
-		G1 X20 Z30; #Lift extruder to allow space to work
-		G4 P60000 # Pause for a 60 seconds (add more time or hit pause button)
-		G1 X-20 Z-30; # Go back to initial position to resume printing
+			G400 #Finish all current moves
+			G91 # Relative coordinates
+			G1 X20 Z30; #Lift extruder to allow space to work
+			G4 P60000 # Pause for a 60 seconds (add more time or hit pause button)
+			G1 X-20 Z-30; # Go back to initial position to resume printing
 ...T1 (ink) CODE
-8.	Open Pronterface - Open .gcode file and print
+	8. Open Pronterface - Open .gcode file and print
+
 
 
 ### Config: MultilayerConfig
