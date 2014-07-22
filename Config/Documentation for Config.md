@@ -47,9 +47,9 @@ Prepared by: Elena Chong
 Modified from Steve Kelly's lewis_corexy_1 single extrusion config and Dan's postprocessingscript
 	Calibrated for dual extrusion (Plastic and Ink) to print on the CoreXY Printer. Just changed "Print center" and " Extruder offset"
 ### NOTE: Steps taken to adapt postprocessingscript for the corexy printer:
-	First, edit Dan's PrusaCircuitConverterScript.pl to use M42 P6 instead of M42 P32, then add the file directory into Slic3r - Print Settings - Output options
-	Second, add these into Slic3r - Printer Settings - Custom G-code
-		Start G-code:
+First, edit Dan's PrusaCircuitConverterScript.pl to use M42 P6 instead of M42 P32, then add the file directory into Slic3r - Print Settings - Output options
+Second, add these into Slic3r - Printer Settings - Custom G-code
+Start G-code:
 		
 			G28 ; home all axis
 			G1 Z5 F5000 ; lift nozzle
@@ -61,7 +61,7 @@ Modified from Steve Kelly's lewis_corexy_1 single extrusion config and Dan's pos
 			;CIRCUIT_POST_PROCESSOR: RETRACT_RESTART_EXTRA_TOOLCHANGE = ,[retract_restart_extra_toolchange]
 			;CIRCUIT_POST_PROCESSOR: BEGIN G CODE
 			
-		End G-code:
+End G-code:
 		
 			M00
 			M42 P32 S0
@@ -73,7 +73,7 @@ Modified from Steve Kelly's lewis_corexy_1 single extrusion config and Dan's pos
 			M84     ; disable motors
 			;END G CODE
 			
-		Last, Make sure to enable Wipe while retracting by going into Printer Settings - Extruder 1 - Rectraction.
+Last, Make sure to enable Wipe while retracting by going into Printer Settings - Extruder 1 - Rectraction.
 		
 	
 
