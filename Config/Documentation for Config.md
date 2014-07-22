@@ -1,16 +1,14 @@
 # Slic3r Config Documentation
-### Author: Elena Chong, Michael Perrone
-###	 Date: 7/21/2014
-###	 This is the documentation for the different Slic3r configurations. Doubts/questions should be directed to the 			respective person who prepared the Slicer config.                                                                      
-# Printing with Prusa i3                                 
-## Config: ConductivityTracesConfig
-### Prepared by: Elena Chong
-### Detail: Modified from Dan Fitzgerald's ArduinoCircuit Config
-### Used for printing circuit on plastic
-###	We can print the plastic and the ink as separate gcode files. This allows us to print one thing completely, home the printer,
-###	load the ink gcode, then do dry runs with the silver extruder to make sure the position of the two extruders are calibrated properly
-###	before actually printing with the silver ink. You will need to separate the gcode for the plastic and the silver ink.
-###	All moves are in absolute coordinates, so if you home the printer in between prints it will go to where it left off
+Author: Elena Chong, Michael Perrone
+Date: 7/21/2014
+This is the documentation for the different Slic3r configurations. Doubts/questions should be directed to the respective person who prepared the Slicer config.                            
+
+## Printing with Prusa i3                                 
+### Config: ConductivityTracesConfig
+Prepared by: Elena Chong
+Detail: Modified from Dan Fitzgerald's ArduinoCircuit Config
+	 Used for printing circuit on plastic
+	We can print the plastic and the ink as separate gcode files. This allows us to print one thing completely, home the printer, load the ink gcode, then do dry runs with the silver extruder to make sure the position of the two extruders are calibrated properly before actually printing with the silver ink. You will need to separate the gcode for the plastic and the silver ink. All moves are in absolute coordinates, so if you home the printer in between prints it will go to where it left off
 	
 	Steps:
 	1. Open Slic3r and load config
