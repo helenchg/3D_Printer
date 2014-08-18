@@ -1,9 +1,6 @@
-# Ink extrusion for the Lewis Research Group CoreXY printer
-# Author: Daniel Fitzgerald (PrusaCircuitConverterScript.pl)
-# Modified by Elena Chong for the CoreXY Printer.
-# Creation date: 06/13/2014
-# Modified: 7/18/2014
-# Modified V1.1: 8/18/2014
+#	Arduino Test Script 1
+#	Daniel Fitzgerald
+#	06/13/2014
 #	Description:
 #This Slic3r post processig scripts operates on g-code exported by slic3r version 1.01 using the "Megacaster settings from TB"
 #It converts the second extruder to print conductive ink using direct-write technology instead of FDM (Fused-deposition-modeling)
@@ -35,15 +32,14 @@ my $curLayerHeight = 0;
 my $curLayerNumber = -1;
 my $inGCodeBody = 0;		#have we reached the main body of the g code (or still in header comments)
 my $curZHeight =0;		#current Z height
-my $countPressure =0; #for lifting reference 
 
 #G Code commands to insert
-my $strPressureOn = "M400\nM42 P6 S255 ; Pressure on\n";
-my $strPressureOff = "M400\nM42 P6 S0 ; Pressure off\n";
+my $strPressureOn = "M400\nM42 P32 S255 ; Pressure on\n";
+my $strPressureOff = "M400\nM42 P32 S0 ; Pressure off\n";
 my $strPauseCode = "M400\nM25 ; Pause\nM601 ; record current position\n";
 my $strResumePause = "M602\nM24 unpause\n";
-my $pauseHookDwellTime = 60000; # a minute pause 
-my $strEndFDMGCode = "\n\nEND FDM G CODE\nM400\nM42 P6 S0\nG91\nG1 Z5 F6000\nG90\nSEPARATE HERE\n\n";#";END FDM G CODE\nM400\nM42 P6 S0\nG91\nG1 Z5 F6000\nG90\nG1 X5\nM400\nG4 P".$pauseHookDwellTime." ; Dwell to catch component insertion pause.\n\nSEPARATE HERE\n\n";
+my $pauseHookDwellTime = 60000;
+my $strEndFDMGCode = "\n\nEND FDM G CODE\nM400\nM42 P32 S0\nG91\nG1 Z5 F6000\nG90\nSEPARATE HERE\n\n";#";END FDM G CODE\nM400\nM42 P32 S0\nG91\nG1 Z5 F6000\nG90\nG1 X5\nM400\nG4 P".$pauseHookDwellTime." ; Dwell to catch component insertion pause.\n\nSEPARATE HERE\n\n";
 
 my $dwellTimeBeforeRetraction = 1;#200;	#ms
 my $dwellTimeAfterRetractionCompensation = 1;#200; #ms
@@ -149,15 +145,10 @@ while(<>){	#loop through lines of file
 					print $strEndFDMGCode;
 					$looking_for_next_moveToFirst = 1;
 					print "G1 Z".$curZHeight."; restore Z Travel Height before continuing print\n";
-					print "\nG91 \nG1 Z3\nG90\n" # lift extruder
 				}
-				if($curToolIndex ==0){
-					print "\n\n END SILVER GCODE \n\n START FDM EXTRUSION \n\n";			
 				
-				}
 				next;
 			}
-					
 			
 			#for all other lines, if the current tool is #1 (ink)
 			if ($curToolIndex == 1){
@@ -170,12 +161,6 @@ while(<>){	#loop through lines of file
 					print "; G92 - no reset extruder distance\n";	#print blank line (retain line numbers for easy comparison of before/after postscript code)
 					next;
 				}
-				if (/ ; move to first 	; move to first \(last\) fill point$/){
-					print $_."G1 Z".$curZHeight."; restore Z Travel Height before continuing print\n";
-					#restore Z trave height after lifting
-					next;
-				}
-					
 										
 				#if we are currently retracting (wiping or something) - deactivate extrusion
 				if (/; retract$/ or /; retract for tool change$/){
@@ -228,8 +213,8 @@ sub turnPressureOn{
 		print $strPressureOn;
 		print "G4 P".$dwellTimeAfterRetractionCompensation." ; dwell after retraction compensation\n";
 		$pressureOn=1;
-		}
 	}
+}
 
 #turn pressure nozzle off
 sub turnPressureOff{
